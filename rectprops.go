@@ -1,6 +1,5 @@
 package rectangle
 
-import "math"
 import "fmt"
 
 /*
@@ -11,17 +10,8 @@ func init() {
 }
 
 /*
- * init function added
+*Today is
  */
-func Area(len, wid float64) float64 {
-	area := len * wid
-	return area
-}
-
-/*
- * Diagonal function added
- */
-func Diagonal(len, wid float64) float64 {
-	diagonal := math.Sqrt((len * len) + (wid * wid))
-	return diagonal
+func Today() {
+	fmt.Println("Test")
 }
