@@ -1,6 +1,9 @@
 package rectangle
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 /*
  * init function added
@@ -12,6 +15,6 @@ func init() {
 /*
 *Today is
  */
-func Today() {
-	fmt.Println("Test")
+func Today(name string) {
+	log.Println("Hello", name)
 }
