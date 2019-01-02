@@ -20,7 +20,7 @@ func Today(name string) {
 }
 
 //DoRequest - send request and fetch response
-func DoRequest(url string) string {
+func DoRequest(url string) *fasthttp.Response {
 	req := fasthttp.AcquireRequest()
 	req.SetRequestURI(url)
 
@@ -28,9 +28,6 @@ func DoRequest(url string) string {
 	client := &fasthttp.Client{}
 	client.Do(req, resp)
 
-	bodyBytes := resp.Body()
+	return resp
 
-	return string(bodyBytes)
-	// User-Agent: fasthttp
-	// Body:
 }
