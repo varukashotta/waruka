@@ -1,6 +1,7 @@
 package utilities
 
 import (
+	"errors"
 	"fmt"
 	"log"
 
@@ -20,7 +21,7 @@ func Today(name string) {
 }
 
 //DoRequest - send request and fetch response
-func DoRequest(url string) *fasthttp.Response {
+func DoRequest(url string) (*fasthttp.Response, error) {
 	req := fasthttp.AcquireRequest()
 	req.SetRequestURI(url)
 
@@ -28,6 +29,9 @@ func DoRequest(url string) *fasthttp.Response {
 	client := &fasthttp.Client{}
 	client.Do(req, resp)
 
-	return resp
+	if resp.Header.StatusCode() != 200 {
+		return nil, errors.New("Fetching Error")
+	}
 
+	return resp, nil
 }
